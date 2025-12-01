@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build --workspaces",
+    "build": "npm run build -w @flux-mask/core && npm run build -w @flux-mask/axios-interceptor && npm run build -w @flux-mask/fetch-wrapper",
     "test": "npm run test --workspaces",
     "publish:all": "npm run build && npm publish --workspaces --access public"
   },
