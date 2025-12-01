@@ -37,11 +37,39 @@ export function generateSymmetricKey(): Buffer {
 /**
  * Encrypt data with RSA public key (for key exchange)
  */
+import * as forge from 'node-forge';
+
+declare const window: any;
+
 export function encryptWithPublicKey(data: Buffer, publicKey: string): string {
+  // Check if we are in a browser environment (where crypto.publicEncrypt might lack OAEP support)
+  const isBrowser = typeof window !== 'undefined' || !crypto.publicEncrypt;
+
+  if (isBrowser) {
+    try {
+      const pki = forge.pki;
+      const publicKeyObj = pki.publicKeyFromPem(publicKey);
+      
+      const encrypted = publicKeyObj.encrypt(data.toString('binary'), 'RSA-OAEP', {
+        md: forge.md.sha256.create(),
+        mgf1: {
+          md: forge.md.sha256.create()
+        }
+      });
+      
+      return forge.util.encode64(encrypted);
+    } catch (e) {
+      console.error('Node-forge encryption failed, falling back to crypto', e);
+    }
+  }
+
+  // Fallback to 4 (RSA_PKCS1_OAEP_PADDING) if constants are missing in browser
+  const padding = crypto.constants?.RSA_PKCS1_OAEP_PADDING || 4;
+  
   const encrypted = crypto.publicEncrypt(
     {
       key: publicKey,
-      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
+      padding: padding,
       oaepHash: 'sha256',
     },
     data
