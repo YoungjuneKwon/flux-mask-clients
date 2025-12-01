@@ -1,0 +1,38 @@
+{
+  "name": "@flux-mask/fetch-wrapper",
+  "version": "1.0.0",
+  "description": "Fetch wrapper for flux-mask obfuscation",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "fetch",
+    "encryption",
+    "obfuscation"
+  ],
+  "author": "YoungjuneKwon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youngjunekwon/flux-mask-clients.git",
+    "directory": "packages/fetch-wrapper"
+  },
+  "dependencies": {
+    "@flux-mask/core": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  }
+}

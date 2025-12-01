@@ -1,0 +1,30 @@
+{
+  "name": "flux-mask-clients",
+  "version": "1.0.0",
+  "description": "Client libraries for Flux-Mask encryption",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "publish:all": "npm run build && npm publish --workspaces --access public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youngjunekwon/flux-mask-clients.git"
+  },
+  "keywords": [
+    "flux-mask",
+    "encryption",
+    "client",
+    "axios",
+    "fetch"
+  ],
+  "author": "YoungjuneKwon",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

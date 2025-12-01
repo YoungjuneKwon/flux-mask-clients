@@ -1,0 +1,69 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    # npm 배포 권한 설정
+    permissions:
+      contents: read
+      id-token: write
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build packages
+        run: npm run build
+      
+      - name: Run tests
+        run: npm run test
+      
+      - name: Check if version changed
+        id: check-version
+        run: |
+          # core 패키지 버전 확인
+          CORE_VERSION=$(node -p "require('./packages/core/package.json').version")
+          echo "version=$CORE_VERSION" >> $GITHUB_OUTPUT
+          
+          # npm에 이미 배포된 버전인지 확인
+          if npm view @flux-mask/core@$CORE_VERSION version 2>/dev/null; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Version $CORE_VERSION already published"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "New version $CORE_VERSION will be published"
+          fi
+      
+      - name: Publish to npm
+        if: steps.check-version.outputs.changed == 'true'
+        run: |
+          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
+          npm run publish:all
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      - name: Create Git tag
+        if: steps.check-version.outputs.changed == 'true'
+        run: |
+          VERSION=${{ steps.check-version.outputs.version }}
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git tag -a "v$VERSION" -m "Release v$VERSION"
+          git push origin "v$VERSION"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
