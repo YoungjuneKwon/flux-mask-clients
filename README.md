@@ -79,6 +79,26 @@ npm run test
 npm run publish:all
 ```
 
+## Examples
+
+### Docker Example
+
+A complete example demonstrating the Flux-Mask Nginx proxy with a Node.js upstream service and a web-based visualizer.
+
+1. Navigate to the example directory:
+   ```bash
+   cd examples/docker-example
+   ```
+
+2. Start the services:
+   ```bash
+   docker-compose up
+   ```
+
+3. Open http://localhost:8080 in your browser to see the encryption/decryption flow in action.
+
+For more details, see [examples/docker-example/README.md](examples/docker-example/README.md).
+
 ## License
 
 MIT

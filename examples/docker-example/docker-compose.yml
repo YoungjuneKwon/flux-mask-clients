@@ -1,0 +1,19 @@
+version: '3'
+services:
+  flux-mask:
+    image: winm2m/fluxmask-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./flux-mask.conf:/etc/flux-mask/flux-mask.conf
+    depends_on:
+      - upstream
+
+  upstream:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./upstream:/app
+    command: sh -c "npm install && node server.js"
+    expose:
+      - "8080"

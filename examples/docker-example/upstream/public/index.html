@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux-Mask Nginx Visualizer</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #e2e8f0;
+            --border-color: #334155;
+            --success-color: #10b981;
+            --nginx-color: #009639;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #009639, #60a5fa, #a78bfa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #94a3b8;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-color);
+            font-family: monospace;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        .flow-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            background-color: #0f172a;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .step.nginx-step {
+            border-color: var(--nginx-color);
+            background: linear-gradient(135deg, rgba(0, 150, 57, 0.1) 0%, #0f172a 100%);
+        }
+
+        .step h3 {
+            margin-top: 0;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .step.nginx-step h3 {
+            color: var(--nginx-color);
+        }
+
+        .step-content {
+            font-family: monospace;
+            font-size: 0.75rem;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #a5b4fc;
+            max-height: 180px;
+            overflow-y: auto;
+        }
+
+        .status {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            text-align: center;
+            font-weight: bold;
+        }
+        .status.success { background-color: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .status.error { background-color: rgba(239, 68, 68, 0.2); color: #f87171; }
+        .status.loading { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+
+        .architecture {
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .architecture h2 {
+            margin-top: 0;
+            color: #94a3b8;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .arch-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .arch-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .arch-box.nginx {
+            border-color: var(--nginx-color);
+        }
+
+        .arch-box .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .arch-box .label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .arch-arrow {
+            color: #64748b;
+            font-size: 1.5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Flux-Mask Nginx Visualizer</h1>
+        <p class="subtitle">Encryption/Decryption via Nginx Proxy with Lua Plugin</p>
+        
+        <div class="architecture">
+            <h2>Architecture</h2>
+            <div class="arch-diagram">
+                <div class="arch-box">
+                    <div class="icon">🌐</div>
+                    <div class="label">Browser<br>(Encrypted)</div>
+                </div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-box nginx">
+                    <div class="icon">🔓</div>
+                    <div class="label">Nginx<br>(Decrypt)</div>
+                </div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-box">
+                    <div class="icon">📦</div>
+                    <div class="label">Backend<br>(Plaintext)</div>
+                </div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-box nginx">
+                    <div class="icon">🔒</div>
+                    <div class="label">Nginx<br>(Encrypt)</div>
+                </div>
+                <div class="arch-arrow">→</div>
+                <div class="arch-box">
+                    <div class="icon">🌐</div>
+                    <div class="label">Browser<br>(Encrypted)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="input-group">
+                <label for="serverUrl">Nginx Server URL</label>
+                <input type="text" id="serverUrl" value="http://localhost:8080">
+            </div>
+            
+            <div class="input-group">
+                <label for="requestData">Request Data (JSON)</label>
+                <textarea id="requestData">{
+  "name": "Alice Smith",
+  "email": "alice@example.com",
+  "role": "admin",
+  "secret": "super_secret_password"
+}</textarea>
+            </div>
+            
+            <button id="sendBtn">Send Encrypted Request via Nginx</button>
+            <div id="status" class="status" style="display: none;"></div>
+        </div>
+
+        <div class="flow-container">
+            <div class="step">
+                <h3>1. Original Data</h3>
+                <div id="step1" class="step-content">-</div>
+            </div>
+            
+            <div class="step">
+                <h3>2. Encrypted Request</h3>
+                <div id="step2" class="step-content">-</div>
+            </div>
+            
+            <div class="step nginx-step">
+                <h3>3. Nginx Decrypts</h3>
+                <div id="step3" class="step-content">Nginx Lua plugin decrypts the request using the session key and forwards plaintext to backend</div>
+            </div>
+            
+            <div class="step">
+                <h3>4. Backend Response</h3>
+                <div id="step4" class="step-content">Backend processes plaintext request and returns plaintext response</div>
+            </div>
+            
+            <div class="step nginx-step">
+                <h3>5. Nginx Encrypts</h3>
+                <div id="step5" class="step-content">Nginx Lua plugin encrypts the response using the session key</div>
+            </div>
+            
+            <div class="step">
+                <h3>6. Encrypted Response</h3>
+                <div id="step6" class="step-content">-</div>
+            </div>
+            
+            <div class="step">
+                <h3>7. Decrypted Response</h3>
+                <div id="step7" class="step-content">-</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bundle.js"></script>
+</body>
+</html>
