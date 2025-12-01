@@ -44,10 +44,21 @@ class FluxMaskClient {
       // Step 1: Get public key from server
       const publicKeyResponse = await this.axiosInstance.get(
         this.config.publicKeyEndpoint!,
-        { headers: { [FLUX_MASK_HEADER]: 'init' } }
+        { 
+          headers: { [FLUX_MASK_HEADER]: 'init' },
+          responseType: 'text'
+        }
       );
       
-      this.publicKey = publicKeyResponse.data.publicKey;
+      const rawKey = publicKeyResponse.data;
+      // Remove any existing headers/footers just in case, and whitespace
+      const cleanKey = typeof rawKey === 'string' ? rawKey
+        .replace(/-----BEGIN PUBLIC KEY-----/g, '')
+        .replace(/-----END PUBLIC KEY-----/g, '')
+        .replace(/\s/g, '') : '';
+        
+      const chunkedKey = cleanKey.match(/.{1,64}/g)?.join('\n') || cleanKey;
+      this.publicKey = `-----BEGIN PUBLIC KEY-----\n${chunkedKey}\n-----END PUBLIC KEY-----`;
       
       // Step 2: Generate symmetric key
       this.symmetricKey = generateSymmetricKey();

@@ -66,6 +66,10 @@ export function encryptWithPublicKey(data: Buffer, publicKey: string): string {
   // Fallback to 4 (RSA_PKCS1_OAEP_PADDING) if constants are missing in browser
   const padding = crypto.constants?.RSA_PKCS1_OAEP_PADDING || 4;
   
+  if (!crypto.publicEncrypt) {
+    throw new Error('Public encryption not supported in this environment (node-forge failed and no crypto.publicEncrypt)');
+  }
+
   const encrypted = crypto.publicEncrypt(
     {
       key: publicKey,
@@ -75,6 +79,10 @@ export function encryptWithPublicKey(data: Buffer, publicKey: string): string {
     data
   );
   
+  if (!encrypted) {
+    throw new Error('Encryption failed (crypto.publicEncrypt returned nothing)');
+  }
+
   return encrypted.toString('base64');
 }
 

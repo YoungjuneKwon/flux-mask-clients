@@ -42,8 +42,15 @@ class FluxMaskFetchClient {
         headers: { [FLUX_MASK_HEADER]: 'init' },
       });
       
-      const publicKeyData = await publicKeyResponse.json();
-      this.publicKey = publicKeyData.publicKey;
+      const rawKey = await publicKeyResponse.text();
+      // Remove any existing headers/footers just in case, and whitespace
+      const cleanKey = rawKey
+        .replace(/-----BEGIN PUBLIC KEY-----/g, '')
+        .replace(/-----END PUBLIC KEY-----/g, '')
+        .replace(/\s/g, '');
+        
+      const chunkedKey = cleanKey.match(/.{1,64}/g)?.join('\n') || cleanKey;
+      this.publicKey = `-----BEGIN PUBLIC KEY-----\n${chunkedKey}\n-----END PUBLIC KEY-----`;
       
       // Step 2: Generate symmetric key
       this.symmetricKey = generateSymmetricKey();

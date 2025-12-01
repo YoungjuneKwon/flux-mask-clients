@@ -1820,10 +1820,10 @@
     }
   });
 
-  // buffer-shim.js
+  // upstream/buffer-shim.js
   var import_buffer;
   var init_buffer_shim = __esm({
-    "buffer-shim.js"() {
+    "upstream/buffer-shim.js"() {
       import_buffer = __toESM(require_buffer());
       if (typeof window !== "undefined") {
         window.Buffer = import_buffer.Buffer;
@@ -1831,9 +1831,9 @@
     }
   });
 
-  // ../../node_modules/process/browser.js
+  // upstream/node_modules/process/browser.js
   var require_browser = __commonJS({
-    "../../node_modules/process/browser.js"(exports, module) {
+    "upstream/node_modules/process/browser.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var process2 = module.exports = {};
@@ -1995,19 +1995,19 @@
     }
   });
 
-  // process-shim.js
+  // upstream/process-shim.js
   var import_browser;
   var init_process_shim = __esm({
-    "process-shim.js"() {
+    "upstream/process-shim.js"() {
       import_browser = __toESM(require_browser());
       import_browser.default.env = import_browser.default.env || {};
       import_browser.default.env.NODE_ENV = import_browser.default.env.NODE_ENV || "production";
     }
   });
 
-  // ../../flux-mask-clients/node_modules/axios/dist/browser/axios.cjs
+  // ../../node_modules/axios/dist/browser/axios.cjs
   var require_axios = __commonJS({
-    "../../flux-mask-clients/node_modules/axios/dist/browser/axios.cjs"(exports, module) {
+    "../../node_modules/axios/dist/browser/axios.cjs"(exports, module) {
       "use strict";
       init_process_shim();
       init_buffer_shim();
@@ -4495,9 +4495,9 @@
     }
   });
 
-  // ../../flux-mask-clients/packages/core/dist/config.js
+  // ../../packages/core/dist/config.js
   var require_config = __commonJS({
-    "../../flux-mask-clients/packages/core/dist/config.js"(exports) {
+    "../../packages/core/dist/config.js"(exports) {
       "use strict";
       init_process_shim();
       init_buffer_shim();
@@ -44881,9 +44881,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/forge.js
+  // ../../node_modules/node-forge/lib/forge.js
   var require_forge = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/forge.js"(exports, module) {
+    "../../node_modules/node-forge/lib/forge.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       module.exports = {
@@ -44895,9 +44895,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/baseN.js
+  // ../../node_modules/node-forge/lib/baseN.js
   var require_baseN = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/baseN.js"(exports, module) {
+    "../../node_modules/node-forge/lib/baseN.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var api = {};
@@ -45011,9 +45011,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/util.js
+  // ../../node_modules/node-forge/lib/util.js
   var require_util3 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/util.js"(exports, module) {
+    "../../node_modules/node-forge/lib/util.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -46394,9 +46394,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/cipher.js
+  // ../../node_modules/node-forge/lib/cipher.js
   var require_cipher2 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/cipher.js"(exports, module) {
+    "../../node_modules/node-forge/lib/cipher.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -46513,9 +46513,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/cipherModes.js
+  // ../../node_modules/node-forge/lib/cipherModes.js
   var require_cipherModes = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/cipherModes.js"(exports, module) {
+    "../../node_modules/node-forge/lib/cipherModes.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -47165,9 +47165,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/aes.js
+  // ../../node_modules/node-forge/lib/aes.js
   var require_aes2 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/aes.js"(exports, module) {
+    "../../node_modules/node-forge/lib/aes.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -47442,9 +47442,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/oids.js
+  // ../../node_modules/node-forge/lib/oids.js
   var require_oids = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/oids.js"(exports, module) {
+    "../../node_modules/node-forge/lib/oids.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -47588,9 +47588,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/asn1.js
+  // ../../node_modules/node-forge/lib/asn1.js
   var require_asn13 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/asn1.js"(exports, module) {
+    "../../node_modules/node-forge/lib/asn1.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -48409,9 +48409,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/md.js
+  // ../../node_modules/node-forge/lib/md.js
   var require_md = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/md.js"(exports, module) {
+    "../../node_modules/node-forge/lib/md.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -48420,9 +48420,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/hmac.js
+  // ../../node_modules/node-forge/lib/hmac.js
   var require_hmac2 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/hmac.js"(exports, module) {
+    "../../node_modules/node-forge/lib/hmac.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -48504,9 +48504,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/md5.js
+  // ../../node_modules/node-forge/lib/md5.js
   var require_md53 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/md5.js"(exports, module) {
+    "../../node_modules/node-forge/lib/md5.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -48798,9 +48798,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pem.js
+  // ../../node_modules/node-forge/lib/pem.js
   var require_pem3 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pem.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pem.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -48951,9 +48951,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/des.js
+  // ../../node_modules/node-forge/lib/des.js
   var require_des3 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/des.js"(exports, module) {
+    "../../node_modules/node-forge/lib/des.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -49191,9 +49191,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pbkdf2.js
+  // ../../node_modules/node-forge/lib/pbkdf2.js
   var require_pbkdf2 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pbkdf2.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pbkdf2.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -49308,9 +49308,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/sha256.js
+  // ../../node_modules/node-forge/lib/sha256.js
   var require_sha2562 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/sha256.js"(exports, module) {
+    "../../node_modules/node-forge/lib/sha256.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -49543,9 +49543,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/prng.js
+  // ../../node_modules/node-forge/lib/prng.js
   var require_prng = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/prng.js"(exports, module) {
+    "../../node_modules/node-forge/lib/prng.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -49785,9 +49785,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/random.js
+  // ../../node_modules/node-forge/lib/random.js
   var require_random = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/random.js"(exports, module) {
+    "../../node_modules/node-forge/lib/random.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -49895,9 +49895,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/rc2.js
+  // ../../node_modules/node-forge/lib/rc2.js
   var require_rc2 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/rc2.js"(exports, module) {
+    "../../node_modules/node-forge/lib/rc2.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -50358,9 +50358,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/jsbn.js
+  // ../../node_modules/node-forge/lib/jsbn.js
   var require_jsbn = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/jsbn.js"(exports, module) {
+    "../../node_modules/node-forge/lib/jsbn.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -51539,9 +51539,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/sha1.js
+  // ../../node_modules/node-forge/lib/sha1.js
   var require_sha12 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/sha1.js"(exports, module) {
+    "../../node_modules/node-forge/lib/sha1.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -51737,9 +51737,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pkcs1.js
+  // ../../node_modules/node-forge/lib/pkcs1.js
   var require_pkcs1 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pkcs1.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pkcs1.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -51891,9 +51891,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/prime.js
+  // ../../node_modules/node-forge/lib/prime.js
   var require_prime = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/prime.js"(exports, module) {
+    "../../node_modules/node-forge/lib/prime.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -52055,9 +52055,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/rsa.js
+  // ../../node_modules/node-forge/lib/rsa.js
   var require_rsa = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/rsa.js"(exports, module) {
+    "../../node_modules/node-forge/lib/rsa.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -53248,9 +53248,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pbe.js
+  // ../../node_modules/node-forge/lib/pbe.js
   var require_pbe = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pbe.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pbe.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -54027,9 +54027,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pkcs7asn1.js
+  // ../../node_modules/node-forge/lib/pkcs7asn1.js
   var require_pkcs7asn1 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pkcs7asn1.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pkcs7asn1.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -54330,9 +54330,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/mgf1.js
+  // ../../node_modules/node-forge/lib/mgf1.js
   var require_mgf1 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/mgf1.js"(exports, module) {
+    "../../node_modules/node-forge/lib/mgf1.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -54367,9 +54367,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/mgf.js
+  // ../../node_modules/node-forge/lib/mgf.js
   var require_mgf2 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/mgf.js"(exports, module) {
+    "../../node_modules/node-forge/lib/mgf.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -54379,9 +54379,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pss.js
+  // ../../node_modules/node-forge/lib/pss.js
   var require_pss = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pss.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pss.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -54500,9 +54500,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/x509.js
+  // ../../node_modules/node-forge/lib/x509.js
   var require_x509 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/x509.js"(exports, module) {
+    "../../node_modules/node-forge/lib/x509.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -56626,9 +56626,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pkcs12.js
+  // ../../node_modules/node-forge/lib/pkcs12.js
   var require_pkcs12 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pkcs12.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pkcs12.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -57490,9 +57490,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pki.js
+  // ../../node_modules/node-forge/lib/pki.js
   var require_pki = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pki.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pki.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -57545,9 +57545,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/tls.js
+  // ../../node_modules/node-forge/lib/tls.js
   var require_tls = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/tls.js"(exports, module) {
+    "../../node_modules/node-forge/lib/tls.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -59580,9 +59580,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/aesCipherSuites.js
+  // ../../node_modules/node-forge/lib/aesCipherSuites.js
   var require_aesCipherSuites = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/aesCipherSuites.js"(exports, module) {
+    "../../node_modules/node-forge/lib/aesCipherSuites.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -59726,9 +59726,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/sha512.js
+  // ../../node_modules/node-forge/lib/sha512.js
   var require_sha5122 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/sha512.js"(exports, module) {
+    "../../node_modules/node-forge/lib/sha512.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -60136,9 +60136,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/asn1-validator.js
+  // ../../node_modules/node-forge/lib/asn1-validator.js
   var require_asn1_validator = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/asn1-validator.js"(exports) {
+    "../../node_modules/node-forge/lib/asn1-validator.js"(exports) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -60230,9 +60230,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/ed25519.js
+  // ../../node_modules/node-forge/lib/ed25519.js
   var require_ed25519 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/ed25519.js"(exports, module) {
+    "../../node_modules/node-forge/lib/ed25519.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -61330,9 +61330,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/kem.js
+  // ../../node_modules/node-forge/lib/kem.js
   var require_kem = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/kem.js"(exports, module) {
+    "../../node_modules/node-forge/lib/kem.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -61395,9 +61395,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/log.js
+  // ../../node_modules/node-forge/lib/log.js
   var require_log = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/log.js"(exports, module) {
+    "../../node_modules/node-forge/lib/log.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -61572,9 +61572,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/md.all.js
+  // ../../node_modules/node-forge/lib/md.all.js
   var require_md_all = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/md.all.js"(exports, module) {
+    "../../node_modules/node-forge/lib/md.all.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       module.exports = require_md();
@@ -61585,9 +61585,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/pkcs7.js
+  // ../../node_modules/node-forge/lib/pkcs7.js
   var require_pkcs7 = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/pkcs7.js"(exports, module) {
+    "../../node_modules/node-forge/lib/pkcs7.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -62576,9 +62576,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/ssh.js
+  // ../../node_modules/node-forge/lib/ssh.js
   var require_ssh = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/ssh.js"(exports, module) {
+    "../../node_modules/node-forge/lib/ssh.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       var forge = require_forge();
@@ -62714,9 +62714,9 @@
     }
   });
 
-  // ../../flux-mask-clients/node_modules/node-forge/lib/index.js
+  // ../../node_modules/node-forge/lib/index.js
   var require_lib = __commonJS({
-    "../../flux-mask-clients/node_modules/node-forge/lib/index.js"(exports, module) {
+    "../../node_modules/node-forge/lib/index.js"(exports, module) {
       init_process_shim();
       init_buffer_shim();
       module.exports = require_forge();
@@ -62748,9 +62748,9 @@
     }
   });
 
-  // ../../flux-mask-clients/packages/core/dist/crypto.js
+  // ../../packages/core/dist/crypto.js
   var require_crypto = __commonJS({
-    "../../flux-mask-clients/packages/core/dist/crypto.js"(exports) {
+    "../../packages/core/dist/crypto.js"(exports) {
       "use strict";
       init_process_shim();
       init_buffer_shim();
@@ -62837,11 +62837,17 @@
           }
         }
         const padding = crypto.constants?.RSA_PKCS1_OAEP_PADDING || 4;
+        if (!crypto.publicEncrypt) {
+          throw new Error("Public encryption not supported in this environment (node-forge failed and no crypto.publicEncrypt)");
+        }
         const encrypted = crypto.publicEncrypt({
           key: publicKey,
           padding,
           oaepHash: "sha256"
         }, data);
+        if (!encrypted) {
+          throw new Error("Encryption failed (crypto.publicEncrypt returned nothing)");
+        }
         return encrypted.toString("base64");
       }
       function decryptWithPrivateKey(encryptedData, privateKey) {
@@ -62886,9 +62892,9 @@
     }
   });
 
-  // ../../flux-mask-clients/packages/core/dist/session.js
+  // ../../packages/core/dist/session.js
   var require_session = __commonJS({
-    "../../flux-mask-clients/packages/core/dist/session.js"(exports) {
+    "../../packages/core/dist/session.js"(exports) {
       "use strict";
       init_process_shim();
       init_buffer_shim();
@@ -62974,9 +62980,9 @@
     }
   });
 
-  // ../../flux-mask-clients/packages/core/dist/index.js
+  // ../../packages/core/dist/index.js
   var require_dist = __commonJS({
-    "../../flux-mask-clients/packages/core/dist/index.js"(exports) {
+    "../../packages/core/dist/index.js"(exports) {
       "use strict";
       init_process_shim();
       init_buffer_shim();
@@ -63007,9 +63013,9 @@
     }
   });
 
-  // ../../flux-mask-clients/packages/axios-interceptor/dist/index.js
+  // ../../packages/axios-interceptor/dist/index.js
   var require_dist2 = __commonJS({
-    "../../flux-mask-clients/packages/axios-interceptor/dist/index.js"(exports) {
+    "../../packages/axios-interceptor/dist/index.js"(exports) {
       "use strict";
       init_process_shim();
       init_buffer_shim();
@@ -63042,8 +63048,16 @@
         }
         async doInitialize() {
           try {
-            const publicKeyResponse = await this.axiosInstance.get(this.config.publicKeyEndpoint, { headers: { [core_1.FLUX_MASK_HEADER]: "init" } });
-            this.publicKey = publicKeyResponse.data.publicKey;
+            const publicKeyResponse = await this.axiosInstance.get(this.config.publicKeyEndpoint, {
+              headers: { [core_1.FLUX_MASK_HEADER]: "init" },
+              responseType: "text"
+            });
+            const rawKey = publicKeyResponse.data;
+            const cleanKey = typeof rawKey === "string" ? rawKey.replace(/-----BEGIN PUBLIC KEY-----/g, "").replace(/-----END PUBLIC KEY-----/g, "").replace(/\s/g, "") : "";
+            const chunkedKey = cleanKey.match(/.{1,64}/g)?.join("\n") || cleanKey;
+            this.publicKey = `-----BEGIN PUBLIC KEY-----
+${chunkedKey}
+-----END PUBLIC KEY-----`;
             this.symmetricKey = (0, core_1.generateSymmetricKey)();
             this.sessionId = (0, core_1.generateSessionId)();
             const encryptedKey = (0, core_1.encryptWithPublicKey)(this.symmetricKey, this.publicKey);
@@ -63123,23 +63137,23 @@
     }
   });
 
-  // public/client-app.js
+  // upstream/public/client-app.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/index.js
+  // upstream/node_modules/axios/index.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/axios.js
+  // upstream/node_modules/axios/lib/axios.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/utils.js
+  // upstream/node_modules/axios/lib/utils.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/bind.js
+  // upstream/node_modules/axios/lib/helpers/bind.js
   init_process_shim();
   init_buffer_shim();
   function bind(fn, thisArg) {
@@ -63148,7 +63162,7 @@
     };
   }
 
-  // ../../node_modules/axios/lib/utils.js
+  // upstream/node_modules/axios/lib/utils.js
   var { toString } = Object.prototype;
   var { getPrototypeOf } = Object;
   var { iterator, toStringTag } = Symbol;
@@ -63533,23 +63547,23 @@
     isIterable
   };
 
-  // ../../node_modules/axios/lib/core/Axios.js
+  // upstream/node_modules/axios/lib/core/Axios.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/buildURL.js
+  // upstream/node_modules/axios/lib/helpers/buildURL.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/AxiosURLSearchParams.js
+  // upstream/node_modules/axios/lib/helpers/AxiosURLSearchParams.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/toFormData.js
+  // upstream/node_modules/axios/lib/helpers/toFormData.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/core/AxiosError.js
+  // upstream/node_modules/axios/lib/core/AxiosError.js
   init_process_shim();
   init_buffer_shim();
   function AxiosError(message, code, config, request, response) {
@@ -63630,12 +63644,12 @@
   };
   var AxiosError_default = AxiosError;
 
-  // ../../node_modules/axios/lib/helpers/null.js
+  // upstream/node_modules/axios/lib/helpers/null.js
   init_process_shim();
   init_buffer_shim();
   var null_default = null;
 
-  // ../../node_modules/axios/lib/helpers/toFormData.js
+  // upstream/node_modules/axios/lib/helpers/toFormData.js
   function isVisitable(thing) {
     return utils_default.isPlainObject(thing) || utils_default.isArray(thing);
   }
@@ -63750,7 +63764,7 @@
   }
   var toFormData_default = toFormData;
 
-  // ../../node_modules/axios/lib/helpers/AxiosURLSearchParams.js
+  // upstream/node_modules/axios/lib/helpers/AxiosURLSearchParams.js
   function encode(str) {
     const charMap = {
       "!": "%21",
@@ -63783,7 +63797,7 @@
   };
   var AxiosURLSearchParams_default = AxiosURLSearchParams;
 
-  // ../../node_modules/axios/lib/helpers/buildURL.js
+  // upstream/node_modules/axios/lib/helpers/buildURL.js
   function encode2(val) {
     return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+");
   }
@@ -63814,7 +63828,7 @@
     return url;
   }
 
-  // ../../node_modules/axios/lib/core/InterceptorManager.js
+  // upstream/node_modules/axios/lib/core/InterceptorManager.js
   init_process_shim();
   init_buffer_shim();
   var InterceptorManager = class {
@@ -63880,19 +63894,19 @@
   };
   var InterceptorManager_default = InterceptorManager;
 
-  // ../../node_modules/axios/lib/core/dispatchRequest.js
+  // upstream/node_modules/axios/lib/core/dispatchRequest.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/core/transformData.js
+  // upstream/node_modules/axios/lib/core/transformData.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/defaults/index.js
+  // upstream/node_modules/axios/lib/defaults/index.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/defaults/transitional.js
+  // upstream/node_modules/axios/lib/defaults/transitional.js
   init_process_shim();
   init_buffer_shim();
   var transitional_default = {
@@ -63901,34 +63915,34 @@
     clarifyTimeoutError: false
   };
 
-  // ../../node_modules/axios/lib/helpers/toURLEncodedForm.js
+  // upstream/node_modules/axios/lib/helpers/toURLEncodedForm.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/platform/index.js
+  // upstream/node_modules/axios/lib/platform/index.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/platform/browser/index.js
+  // upstream/node_modules/axios/lib/platform/browser/index.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/platform/browser/classes/URLSearchParams.js
+  // upstream/node_modules/axios/lib/platform/browser/classes/URLSearchParams.js
   init_process_shim();
   init_buffer_shim();
   var URLSearchParams_default = typeof URLSearchParams !== "undefined" ? URLSearchParams : AxiosURLSearchParams_default;
 
-  // ../../node_modules/axios/lib/platform/browser/classes/FormData.js
+  // upstream/node_modules/axios/lib/platform/browser/classes/FormData.js
   init_process_shim();
   init_buffer_shim();
   var FormData_default = typeof FormData !== "undefined" ? FormData : null;
 
-  // ../../node_modules/axios/lib/platform/browser/classes/Blob.js
+  // upstream/node_modules/axios/lib/platform/browser/classes/Blob.js
   init_process_shim();
   init_buffer_shim();
   var Blob_default = typeof Blob !== "undefined" ? Blob : null;
 
-  // ../../node_modules/axios/lib/platform/browser/index.js
+  // upstream/node_modules/axios/lib/platform/browser/index.js
   var browser_default = {
     isBrowser: true,
     classes: {
@@ -63939,7 +63953,7 @@
     protocols: ["http", "https", "file", "blob", "url", "data"]
   };
 
-  // ../../node_modules/axios/lib/platform/common/utils.js
+  // upstream/node_modules/axios/lib/platform/common/utils.js
   var utils_exports = {};
   __export(utils_exports, {
     hasBrowserEnv: () => hasBrowserEnv,
@@ -63959,13 +63973,13 @@
   })();
   var origin = hasBrowserEnv && window.location.href || "http://localhost";
 
-  // ../../node_modules/axios/lib/platform/index.js
+  // upstream/node_modules/axios/lib/platform/index.js
   var platform_default = {
     ...utils_exports,
     ...browser_default
   };
 
-  // ../../node_modules/axios/lib/helpers/toURLEncodedForm.js
+  // upstream/node_modules/axios/lib/helpers/toURLEncodedForm.js
   function toURLEncodedForm(data, options) {
     return toFormData_default(data, new platform_default.classes.URLSearchParams(), {
       visitor: function(value, key, path, helpers) {
@@ -63979,7 +63993,7 @@
     });
   }
 
-  // ../../node_modules/axios/lib/helpers/formDataToJSON.js
+  // upstream/node_modules/axios/lib/helpers/formDataToJSON.js
   init_process_shim();
   init_buffer_shim();
   function parsePropPath(name) {
@@ -64034,7 +64048,7 @@
   }
   var formDataToJSON_default = formDataToJSON;
 
-  // ../../node_modules/axios/lib/defaults/index.js
+  // upstream/node_modules/axios/lib/defaults/index.js
   function stringifySafely(rawValue, parser, encoder) {
     if (utils_default.isString(rawValue)) {
       try {
@@ -64143,11 +64157,11 @@
   });
   var defaults_default = defaults;
 
-  // ../../node_modules/axios/lib/core/AxiosHeaders.js
+  // upstream/node_modules/axios/lib/core/AxiosHeaders.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/parseHeaders.js
+  // upstream/node_modules/axios/lib/helpers/parseHeaders.js
   init_process_shim();
   init_buffer_shim();
   var ignoreDuplicateOf = utils_default.toObjectSet([
@@ -64194,7 +64208,7 @@
     return parsed;
   };
 
-  // ../../node_modules/axios/lib/core/AxiosHeaders.js
+  // upstream/node_modules/axios/lib/core/AxiosHeaders.js
   var $internals = Symbol("internals");
   function normalizeHeader(header) {
     return header && String(header).trim().toLowerCase();
@@ -64423,7 +64437,7 @@
   utils_default.freezeMethods(AxiosHeaders);
   var AxiosHeaders_default = AxiosHeaders;
 
-  // ../../node_modules/axios/lib/core/transformData.js
+  // upstream/node_modules/axios/lib/core/transformData.js
   function transformData(fns, response) {
     const config = this || defaults_default;
     const context = response || config;
@@ -64436,14 +64450,14 @@
     return data;
   }
 
-  // ../../node_modules/axios/lib/cancel/isCancel.js
+  // upstream/node_modules/axios/lib/cancel/isCancel.js
   init_process_shim();
   init_buffer_shim();
   function isCancel(value) {
     return !!(value && value.__CANCEL__);
   }
 
-  // ../../node_modules/axios/lib/cancel/CanceledError.js
+  // upstream/node_modules/axios/lib/cancel/CanceledError.js
   init_process_shim();
   init_buffer_shim();
   function CanceledError(message, config, request) {
@@ -64455,15 +64469,15 @@
   });
   var CanceledError_default = CanceledError;
 
-  // ../../node_modules/axios/lib/adapters/adapters.js
+  // upstream/node_modules/axios/lib/adapters/adapters.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/adapters/xhr.js
+  // upstream/node_modules/axios/lib/adapters/xhr.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/core/settle.js
+  // upstream/node_modules/axios/lib/core/settle.js
   init_process_shim();
   init_buffer_shim();
   function settle(resolve, reject, response) {
@@ -64481,7 +64495,7 @@
     }
   }
 
-  // ../../node_modules/axios/lib/helpers/parseProtocol.js
+  // upstream/node_modules/axios/lib/helpers/parseProtocol.js
   init_process_shim();
   init_buffer_shim();
   function parseProtocol(url) {
@@ -64489,11 +64503,11 @@
     return match && match[1] || "";
   }
 
-  // ../../node_modules/axios/lib/helpers/progressEventReducer.js
+  // upstream/node_modules/axios/lib/helpers/progressEventReducer.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/speedometer.js
+  // upstream/node_modules/axios/lib/helpers/speedometer.js
   init_process_shim();
   init_buffer_shim();
   function speedometer(samplesCount, min) {
@@ -64531,7 +64545,7 @@
   }
   var speedometer_default = speedometer;
 
-  // ../../node_modules/axios/lib/helpers/throttle.js
+  // upstream/node_modules/axios/lib/helpers/throttle.js
   init_process_shim();
   init_buffer_shim();
   function throttle(fn, freq) {
@@ -64568,7 +64582,7 @@
   }
   var throttle_default = throttle;
 
-  // ../../node_modules/axios/lib/helpers/progressEventReducer.js
+  // upstream/node_modules/axios/lib/helpers/progressEventReducer.js
   var progressEventReducer = (listener, isDownloadStream, freq = 3) => {
     let bytesNotified = 0;
     const _speedometer = speedometer_default(50, 250);
@@ -64603,11 +64617,11 @@
   };
   var asyncDecorator = (fn) => (...args) => utils_default.asap(() => fn(...args));
 
-  // ../../node_modules/axios/lib/helpers/resolveConfig.js
+  // upstream/node_modules/axios/lib/helpers/resolveConfig.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/isURLSameOrigin.js
+  // upstream/node_modules/axios/lib/helpers/isURLSameOrigin.js
   init_process_shim();
   init_buffer_shim();
   var isURLSameOrigin_default = platform_default.hasStandardBrowserEnv ? /* @__PURE__ */ ((origin2, isMSIE) => (url) => {
@@ -64618,7 +64632,7 @@
     platform_default.navigator && /(msie|trident)/i.test(platform_default.navigator.userAgent)
   ) : () => true;
 
-  // ../../node_modules/axios/lib/helpers/cookies.js
+  // upstream/node_modules/axios/lib/helpers/cookies.js
   init_process_shim();
   init_buffer_shim();
   var cookies_default = platform_default.hasStandardBrowserEnv ? (
@@ -64666,25 +64680,25 @@
     }
   );
 
-  // ../../node_modules/axios/lib/core/buildFullPath.js
+  // upstream/node_modules/axios/lib/core/buildFullPath.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/isAbsoluteURL.js
+  // upstream/node_modules/axios/lib/helpers/isAbsoluteURL.js
   init_process_shim();
   init_buffer_shim();
   function isAbsoluteURL(url) {
     return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
   }
 
-  // ../../node_modules/axios/lib/helpers/combineURLs.js
+  // upstream/node_modules/axios/lib/helpers/combineURLs.js
   init_process_shim();
   init_buffer_shim();
   function combineURLs(baseURL, relativeURL) {
     return relativeURL ? baseURL.replace(/\/?\/$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
   }
 
-  // ../../node_modules/axios/lib/core/buildFullPath.js
+  // upstream/node_modules/axios/lib/core/buildFullPath.js
   function buildFullPath(baseURL, requestedURL, allowAbsoluteUrls) {
     let isRelativeUrl = !isAbsoluteURL(requestedURL);
     if (baseURL && (isRelativeUrl || allowAbsoluteUrls == false)) {
@@ -64693,7 +64707,7 @@
     return requestedURL;
   }
 
-  // ../../node_modules/axios/lib/core/mergeConfig.js
+  // upstream/node_modules/axios/lib/core/mergeConfig.js
   init_process_shim();
   init_buffer_shim();
   var headersToObject = (thing) => thing instanceof AxiosHeaders_default ? { ...thing } : thing;
@@ -64775,7 +64789,7 @@
     return config;
   }
 
-  // ../../node_modules/axios/lib/helpers/resolveConfig.js
+  // upstream/node_modules/axios/lib/helpers/resolveConfig.js
   var resolveConfig_default = (config) => {
     const newConfig = mergeConfig({}, config);
     let { data, withXSRFToken, xsrfHeaderName, xsrfCookieName, headers, auth } = newConfig;
@@ -64812,7 +64826,7 @@
     return newConfig;
   };
 
-  // ../../node_modules/axios/lib/adapters/xhr.js
+  // upstream/node_modules/axios/lib/adapters/xhr.js
   var isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
   var xhr_default = isXHRAdapterSupported && function(config) {
     return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -64942,11 +64956,11 @@
     });
   };
 
-  // ../../node_modules/axios/lib/adapters/fetch.js
+  // upstream/node_modules/axios/lib/adapters/fetch.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/helpers/composeSignals.js
+  // upstream/node_modules/axios/lib/helpers/composeSignals.js
   init_process_shim();
   init_buffer_shim();
   var composeSignals = (signals, timeout) => {
@@ -64984,7 +64998,7 @@
   };
   var composeSignals_default = composeSignals;
 
-  // ../../node_modules/axios/lib/helpers/trackStream.js
+  // upstream/node_modules/axios/lib/helpers/trackStream.js
   init_process_shim();
   init_buffer_shim();
   var streamChunk = function* (chunk, chunkSize) {
@@ -65063,7 +65077,7 @@
     });
   };
 
-  // ../../node_modules/axios/lib/adapters/fetch.js
+  // upstream/node_modules/axios/lib/adapters/fetch.js
   var DEFAULT_CHUNK_SIZE = 64 * 1024;
   var { isFunction: isFunction2 } = utils_default;
   var globalFetchAPI = (({ Request, Response }) => ({
@@ -65272,7 +65286,7 @@
   };
   var adapter = getFetch();
 
-  // ../../node_modules/axios/lib/adapters/adapters.js
+  // upstream/node_modules/axios/lib/adapters/adapters.js
   var knownAdapters = {
     http: null_default,
     xhr: xhr_default,
@@ -65337,7 +65351,7 @@
     adapters: knownAdapters
   };
 
-  // ../../node_modules/axios/lib/core/dispatchRequest.js
+  // upstream/node_modules/axios/lib/core/dispatchRequest.js
   function throwIfCancellationRequested(config) {
     if (config.cancelToken) {
       config.cancelToken.throwIfRequested();
@@ -65382,16 +65396,16 @@
     });
   }
 
-  // ../../node_modules/axios/lib/helpers/validator.js
+  // upstream/node_modules/axios/lib/helpers/validator.js
   init_process_shim();
   init_buffer_shim();
 
-  // ../../node_modules/axios/lib/env/data.js
+  // upstream/node_modules/axios/lib/env/data.js
   init_process_shim();
   init_buffer_shim();
   var VERSION = "1.13.2";
 
-  // ../../node_modules/axios/lib/helpers/validator.js
+  // upstream/node_modules/axios/lib/helpers/validator.js
   var validators = {};
   ["object", "boolean", "number", "function", "string", "symbol"].forEach((type, i) => {
     validators[type] = function validator(thing) {
@@ -65455,7 +65469,7 @@
     validators
   };
 
-  // ../../node_modules/axios/lib/core/Axios.js
+  // upstream/node_modules/axios/lib/core/Axios.js
   var validators2 = validator_default.validators;
   var Axios = class {
     constructor(instanceConfig) {
@@ -65627,7 +65641,7 @@
   });
   var Axios_default = Axios;
 
-  // ../../node_modules/axios/lib/cancel/CancelToken.js
+  // upstream/node_modules/axios/lib/cancel/CancelToken.js
   init_process_shim();
   init_buffer_shim();
   var CancelToken = class _CancelToken {
@@ -65727,7 +65741,7 @@
   };
   var CancelToken_default = CancelToken;
 
-  // ../../node_modules/axios/lib/helpers/spread.js
+  // upstream/node_modules/axios/lib/helpers/spread.js
   init_process_shim();
   init_buffer_shim();
   function spread(callback) {
@@ -65736,14 +65750,14 @@
     };
   }
 
-  // ../../node_modules/axios/lib/helpers/isAxiosError.js
+  // upstream/node_modules/axios/lib/helpers/isAxiosError.js
   init_process_shim();
   init_buffer_shim();
   function isAxiosError(payload) {
     return utils_default.isObject(payload) && payload.isAxiosError === true;
   }
 
-  // ../../node_modules/axios/lib/helpers/HttpStatusCode.js
+  // upstream/node_modules/axios/lib/helpers/HttpStatusCode.js
   init_process_shim();
   init_buffer_shim();
   var HttpStatusCode = {
@@ -65822,7 +65836,7 @@
   });
   var HttpStatusCode_default = HttpStatusCode;
 
-  // ../../node_modules/axios/lib/axios.js
+  // upstream/node_modules/axios/lib/axios.js
   function createInstance(defaultConfig) {
     const context = new Axios_default(defaultConfig);
     const instance = bind(Axios_default.prototype.request, context);
@@ -65855,7 +65869,7 @@
   axios.default = axios;
   var axios_default = axios;
 
-  // ../../node_modules/axios/index.js
+  // upstream/node_modules/axios/index.js
   var {
     Axios: Axios2,
     AxiosError: AxiosError2,
@@ -65875,7 +65889,7 @@
     mergeConfig: mergeConfig2
   } = axios_default;
 
-  // public/client-app.js
+  // upstream/public/client-app.js
   var import_axios_interceptor = __toESM(require_dist2());
   var serverUrlInput = document.getElementById("serverUrl");
   var requestDataInput = document.getElementById("requestData");
