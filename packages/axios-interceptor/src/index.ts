@@ -139,20 +139,28 @@ export function setupFluxMaskInterceptor(
         return requestConfig;
       }
       
-      // Encrypt request body if present
-      if (requestConfig.data) {
-        const encryptedData = await client.encryptRequest(requestConfig.data);
-        requestConfig.data = encryptedData; // Send encrypted string directly
-        
-        // Add headers
-        if (!requestConfig.headers) {
-          requestConfig.headers = {} as any;
-        }
-        requestConfig.headers[FLUX_MASK_HEADER] = FLUX_MASK_ENCRYPTED;
-        requestConfig.headers[FLUX_MASK_SESSION_HEADER] = client.getSessionId() || '';
-        requestConfig.headers['Content-Type'] = 'text/plain'; // Changed from application/json
+      if (!requestConfig.headers) {
+        requestConfig.headers = {} as any;
       }
-      
+
+      // 본문이 있으면 암호화한다.
+      if (requestConfig.data) {
+        requestConfig.data = await client.encryptRequest(requestConfig.data);
+        requestConfig.headers['Content-Type'] = 'text/plain';
+      } else {
+        // 본문이 없어도 세션은 열어 둬야 한다. 아래에서 세션 ID 를 붙이려면
+        // 키 교환이 끝나 있어야 한다.
+        await client.initialize();
+      }
+
+      // 본문 유무와 무관하게 헤더를 붙인다.
+      //
+      // 서버는 이 헤더를 보고 응답을 암호화할지 정한다. 예전에는 본문이 있을
+      // 때만 붙여서, 정작 개발자도구로 가장 많이 들여다보는 GET 조회 응답이
+      // 평문으로 나갔다. 보호 대상 경로면 메서드와 무관하게 붙인다.
+      requestConfig.headers[FLUX_MASK_HEADER] = FLUX_MASK_ENCRYPTED;
+      requestConfig.headers[FLUX_MASK_SESSION_HEADER] = client.getSessionId() || '';
+
       return requestConfig;
     },
     (error) => Promise.reject(error)

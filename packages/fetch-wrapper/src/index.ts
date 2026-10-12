@@ -131,55 +131,41 @@ export function createFluxMaskFetch(userConfig?: FluxMaskConfig) {
     
     // Clone init to avoid mutation
     const modifiedInit = { ...init };
-    
-    // Encrypt request body if present
+    const headers = new Headers(modifiedInit.headers ?? {});
+
+    // 암호문을 본문에 그대로 싣는다.
+    //
+    // 예전에는 {"encrypted": "..."} 봉투에 담아 application/json 으로 보냈는데,
+    // 서버(Nginx 모듈)와 axios 인터셉터는 암호문을 날것으로 주고받는다. 봉투를
+    // 쓰면 서버가 그 JSON 전체를 복호화하려다 실패한다. 규격을 날것 쪽으로 맞춘다.
     if (modifiedInit.body) {
-      let bodyData: any;
-      
-      if (typeof modifiedInit.body === 'string') {
-        try {
-          bodyData = JSON.parse(modifiedInit.body);
-        } catch {
-          bodyData = modifiedInit.body;
-        }
-      } else {
-        bodyData = modifiedInit.body;
-      }
-      
-      const encryptedData = await client.encryptRequest(bodyData);
-      modifiedInit.body = JSON.stringify({ encrypted: encryptedData });
-      
-      // Add headers
-      if (!modifiedInit.headers) {
-        modifiedInit.headers = {};
-      }
-      
-      const headers = new Headers(modifiedInit.headers);
-      headers.set(FLUX_MASK_HEADER, FLUX_MASK_ENCRYPTED);
-      headers.set(FLUX_MASK_SESSION_HEADER, client.getSessionId() || '');
-      headers.set('Content-Type', 'application/json');
-      modifiedInit.headers = headers;
+      const bodyData =
+        typeof modifiedInit.body === 'string' ? modifiedInit.body : String(modifiedInit.body);
+      modifiedInit.body = await client.encryptRequest(bodyData);
+      headers.set('Content-Type', 'text/plain');
     }
-    
-    // Make request
+
+    // 본문이 없어도 헤더는 붙인다.
+    //
+    // 서버는 이 헤더를 보고 응답을 암호화할지 정한다. 예전에는 본문이 있을 때만
+    // 붙여서, 정작 개발자도구로 가장 많이 들여다보는 GET 조회 응답이 평문으로
+    // 나갔다. 보호 대상 경로면 메서드와 무관하게 붙인다.
+    await client.initialize();
+    headers.set(FLUX_MASK_HEADER, FLUX_MASK_ENCRYPTED);
+    headers.set(FLUX_MASK_SESSION_HEADER, client.getSessionId() || '');
+    modifiedInit.headers = headers;
+
     const response = await fetch(input, modifiedInit);
-    
-    // Check if response is encrypted
+
     if (response.headers.get(FLUX_MASK_HEADER) === FLUX_MASK_ENCRYPTED) {
-      const responseData = await response.json();
-      
-      if (responseData.encrypted) {
-        const decryptedData = client.decryptResponse(responseData.encrypted);
-        
-        // Create new response with decrypted data
-        return new Response(JSON.stringify(decryptedData), {
-          status: response.status,
-          statusText: response.statusText,
-          headers: response.headers,
-        });
-      }
+      const cipher = await response.text();
+      const decrypted = client.decryptResponse(cipher);
+      return new Response(
+        typeof decrypted === 'string' ? decrypted : JSON.stringify(decrypted),
+        { status: response.status, statusText: response.statusText, headers: response.headers },
+      );
     }
-    
+
     return response;
   };
 }
