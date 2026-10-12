@@ -12,7 +12,7 @@ jobs:
     
     # npm 배포 권한 설정
     permissions:
-      contents: read
+      contents: write   # 릴리스 태그 푸시
       id-token: write
     
     steps:
@@ -58,13 +58,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
+      # 태그 푸시는 개인 토큰(secrets.TOKEN)을 쓰고 있었는데, 만료되면
+      # 401 로 죽는다. 실제로 2025-12-01 배포에서 npm 게시는 끝나고 이 단계만
+      # 실패했다. 기본 GITHUB_TOKEN 은 만료가 없다 — 위 permissions 에
+      # contents: write 를 더했다.
       - name: Create Git tag
         if: steps.check-version.outputs.changed == 'true'
         run: |
           VERSION=${{ steps.check-version.outputs.version }}
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git tag -a "v$VERSION" -m "Release v$VERSION"
           git push origin "v$VERSION"
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}

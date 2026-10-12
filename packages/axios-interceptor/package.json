@@ -1,6 +1,6 @@
 {
   "name": "@flux-mask/axios-interceptor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Axios interceptor for flux-mask obfuscation",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -32,7 +32,7 @@
     "axios": "^1.0.0"
   },
   "dependencies": {
-    "@flux-mask/core": "^1.0.0"
+    "@flux-mask/core": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
