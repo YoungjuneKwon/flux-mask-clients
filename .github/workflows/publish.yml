@@ -22,8 +22,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          # Trusted publishing(OIDC)은 npm 11.5.1+ / Node 22.14+ 를 요구한다.
+          # Node 18 은 npm 10 이라 OIDC 를 쓰지 못하고 토큰으로 떨어진다.
+          node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false   # 릴리스 빌드에는 캐시를 쓰지 않는다
       
       - name: Install dependencies
         run: npm ci
@@ -50,13 +53,17 @@ jobs:
             echo "New version $CORE_VERSION will be published"
           fi
       
-      - name: Publish to npm
+      # 토큰을 쓰지 않는다.
+      #
+      # npmjs.com 에서 패키지 3개에 신뢰 발행자(YoungjuneKwon/flux-mask-clients,
+      # publish.yml)를 등록해 뒀다. npm CLI 가 OIDC 환경을 감지해 수초짜리
+      # 자격을 받아 게시한다. 긴 수명 토큰이 없으니 만료도 유출도 없다.
+      #
+      # NPM_TOKEN 을 남겨 두면 OIDC 실패 시 조용히 토큰으로 떨어져, 어느 쪽으로
+      # 인증됐는지 알 수 없게 된다. 그래서 아예 걷어낸다.
+      - name: Publish to npm (OIDC)
         if: steps.check-version.outputs.changed == 'true'
-        run: |
-          npm config set //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}
-          npm run publish:all
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run publish:all
       
       # 태그 푸시는 개인 토큰(secrets.TOKEN)을 쓰고 있었는데, 만료되면
       # 401 로 죽는다. 실제로 2025-12-01 배포에서 npm 게시는 끝나고 이 단계만
