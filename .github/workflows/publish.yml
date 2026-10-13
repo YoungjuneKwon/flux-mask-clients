@@ -26,7 +26,13 @@ jobs:
           # Node 18 은 npm 10 이라 OIDC 를 쓰지 못하고 토큰으로 떨어진다.
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
-          package-manager-cache: false   # 릴리스 빌드에는 캐시를 쓰지 않는다
+
+      # Node 22 가 들고 오는 npm 은 10.x 다. OIDC 는 11.5.1+ 에서만 동작하고,
+      # 그 아래에서는 조용히 토큰 인증으로 떨어져 404 가 난다(실제로 그랬다).
+      - name: Upgrade npm for OIDC
+        run: |
+          npm install -g npm@latest
+          npm --version
       
       - name: Install dependencies
         run: npm ci
